@@ -4,8 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
 var cors = require('cors');
+
+// mongoose connect
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://adith:mongodb@cluster0-shard-00-00-ekozb.mongodb.net:27017,cluster0-shard-00-01-ekozb.mongodb.net:27017,cluster0-shard-00-02-ekozb.mongodb.net:27017/todofancy?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', (err) => {
+    if (!err) {
+        console.log('Server connected!');
+    } else {
+        console.log(err);
+    }
+});
 
 var index = require('./routes/index');
 var users = require('./routes/users');
